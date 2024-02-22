@@ -78,6 +78,12 @@ public class Ball_Controller : MonoBehaviour
             // Debug.Log("collided with Left/Right Wall");
             rbBall.velocity = Vector3.zero;
             inPlay = false;
+            force += 20;    // increase speed after every 'round'
+
+            if (force >= 450)
+            {
+                force = 0;
+            }
         }
     }
 }
