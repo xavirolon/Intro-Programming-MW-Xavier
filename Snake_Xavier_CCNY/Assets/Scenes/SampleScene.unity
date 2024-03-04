@@ -672,7 +672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snakeStartPos: {x: 0, y: 0, z: 0}
-  gameOver: 0
+  tailPreFab: {fileID: 4904176651361461797, guid: 68496befffdaac84893e6a271a09d73b, type: 3}
 --- !u!1 &1982004032
 GameObject:
   m_ObjectHideFlags: 0
