@@ -8,8 +8,8 @@ public class Snake : MonoBehaviour
     // GLOBAL VARIABLES
     Vector3 dir = Vector3.right;
     public Vector3 snakeStartPos;
-    /*public bool gameOver;
-    public FoodSpawn foodSpawn;*/
+    public bool gameOver;   // variable for when game is running
+    public FoodSpawn foodSpawn; // access FoodSpawn script
 
 
     // Keep Track of Tail Elements
@@ -17,7 +17,8 @@ public class Snake : MonoBehaviour
     bool ate = false; 
     public GameObject tailPreFab;
 
-
+    // call GameManager script to use in this script
+    public GameManager myManager;
 
 
     // Start is called before the first frame update
@@ -33,15 +34,17 @@ public class Snake : MonoBehaviour
         // Change the snake's direction by calling function
         ChangeDirection();
 
-        /* Free work Wednesday 
-         * if(gameOver == true)
+        // Free work Wednesday 
+         if(gameOver == true)
         {
+            // if game over, rreset position of snake
             transform.position = snakeStartPos;
             Vector3 dir = new Vector3(0, 0, 0);
-            gameOver = false;
+            gameOver = false;   // game over set to false...replay
+            myManager.foodScore = 0;    // resest score
+            
 
-            Destroy(foodSpawn);
-        }*/
+        }
     }
 
     void MoveSnake()
@@ -105,15 +108,19 @@ public class Snake : MonoBehaviour
 
             // Debug.Log("Food Eaten");
             Destroy(collision.gameObject);  // destory the specific object that entered trigger
-        
+
+            // change score
+            myManager.FoodEaten();
         }
 
         // can give walls tags and make a game over function
-        /*if(collision.gameObject.tag == "Wall")
+        if (collision.gameObject.tag == "Wall")
         {
-            gameOver = true;
+            gameOver = true;    // snake died on wall
             Debug.Log("Game Over");
-            
-        }*/
+
+            // destroy all "Food" tagged objects
+            // Destroy(gameObject.tag == "Food");
+        }
     }
 }
