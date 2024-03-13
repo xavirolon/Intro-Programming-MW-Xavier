@@ -20,6 +20,7 @@ public class FoodSpawn : MonoBehaviour
         InvokeRepeating("Spawn", 3, 4);
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -29,11 +30,11 @@ public class FoodSpawn : MonoBehaviour
     void Spawn()
     {
         // Debug.Log("Spawn Called");
-        int xPos = (int)Random.Range(wallLeft.position.x, wallRight.position.x);
-        int yPos = (int)Random.Range(wallTop.position.y, wallBottom.position.y);
+        
+        int xPos = (int)Random.Range(wallLeft.position.x + 2, wallRight.position.x - 2);
+        int yPos = (int)Random.Range(wallTop.position.y - 2, wallBottom.position.y + 2);
 
         Instantiate(foodPreFab, new Vector3(xPos, yPos, 0), Quaternion.identity);
-    
     
     }
 }
