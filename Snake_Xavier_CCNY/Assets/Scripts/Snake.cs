@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq; // allows use of lists
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Snake : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class Snake : MonoBehaviour
     public bool gameOver;   // variable for when game is running
     public FoodSpawn foodSpawn; // access FoodSpawn script
 
+    public SceneChanger sceneChange; // access SceneChanger script
+    public TextMeshProUGUI foodScoreText;
 
     // Keep Track of Tail Elements
     List<Transform> tail = new List<Transform>();
@@ -35,16 +39,14 @@ public class Snake : MonoBehaviour
         ChangeDirection();
 
         // Free work Wednesday 
-         if(gameOver == true)
+         if(gameOver == true)   // when the game is over
         {
+
             // if game over, rreset position of snake
             transform.position = snakeStartPos;
             Vector3 dir = new Vector3(0, 0, 0);
             gameOver = false;   // game over set to false...replay
             myManager.foodScore = 0;    // resest score
-
-
-            
 
         }
     }
@@ -119,10 +121,18 @@ public class Snake : MonoBehaviour
         if (collision.gameObject.tag == "Wall")
         {
             gameOver = true;    // snake died on wall
-            Debug.Log("Game Over");
+            SceneManager.LoadScene("GameOver"); // load game over scene when snake hits wall (dead)
+            
 
             // destroy all "Food" tagged objects
             // Destroy(gameObject.tag == "Food");
+
+            // destroy all tail segments
+            foreach (Transform segment in tail)
+            {
+                Destroy(segment.gameObject);    // destroy all segments of snake
+            }
+            tail.Clear();   // clear list of tails
         }
     }
 }
