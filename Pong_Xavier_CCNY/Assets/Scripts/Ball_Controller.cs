@@ -9,7 +9,7 @@ public class Ball_Controller : MonoBehaviour
 
 // rigidbody2D gives physics components to objects (mass, gravity, force, etc)
     public Rigidbody2D rbBall;
-    public float force = 200; // declare and set force variable
+    public float force = 400; // declare and set force variable
 
     private float xDir; // declare x direction float
     private float yDir; // declare y direction float
@@ -80,7 +80,7 @@ public class Ball_Controller : MonoBehaviour
             inPlay = false;
             force += 20;    // increase speed after every 'round'
 
-            if (force >= 450)
+            if (force >= 750)
             {
                 force = 0;
             }
