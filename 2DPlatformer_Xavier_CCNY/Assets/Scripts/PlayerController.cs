@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -12,10 +13,18 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 300;
     public bool isJumping = false;
 
+    // 4/3 new global variables
+    // player health
+    public int maxHealth = 20;
+    public int currentHealth;
+    public HealthBar healthBarScript;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentHealth = maxHealth;
+        healthBarScript.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -67,5 +76,18 @@ public class PlayerController : MonoBehaviour
         {
             isJumping = false;
         }
+
+        if(collision.gameObject.tag == "Lava")
+        {
+            // Debug.Log("Ow.");
+            TakeDamage(2);
+
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBarScript.SetHealth(currentHealth);
     }
 }
