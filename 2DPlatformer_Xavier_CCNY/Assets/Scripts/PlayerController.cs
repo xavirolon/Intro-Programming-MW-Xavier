@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     // GLOBAL VARIABLES
     public Rigidbody2D playerBody;
 
-    public float playerSpeed = 0.5f;    // 0.05f; 
+    public float playerSpeed = 1f;    // 0.05f; 
     public float jumpForce = 300;
     public bool isJumping = false;
 
