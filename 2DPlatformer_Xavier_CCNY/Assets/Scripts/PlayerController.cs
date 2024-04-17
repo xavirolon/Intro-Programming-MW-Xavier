@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBarScript;
 
+    // wed 4/17
+    // Flip Dirction variables
+    public bool flippedLeft;    // keep track of which way sprite IS CURRENTLY FACING
+    public bool facingLeft;    // keep track of which way our sprite SHOULD BE facing
 
     // Start is called before the first frame update
     void Start()
@@ -44,15 +48,21 @@ public class PlayerController : MonoBehaviour
         {
             //Debug.Log("A pressed");
             newPos.x -= playerSpeed;    // every frame subtract speed
+            facingLeft = true;
+            Flip(facingLeft);
         }
         else if(Input.GetKey(KeyCode.D))
         {
             //Debug.Log("D Pressed.");
             newPos.x += playerSpeed;
+            facingLeft = false;
+            Flip(facingLeft);
         }
 
         // actually moving by setting the position the newPos varible
         transform.position = newPos;
+    
+    
     }
 
     private void Jump()
@@ -89,5 +99,23 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth -= damage;
         healthBarScript.SetHealth(currentHealth);
+    }
+
+    void Flip(bool facingRight)
+    {
+        //Debug.Log("Flip() called, facingRight = " + facingRight);
+        if (facingLeft && !flippedLeft)
+        {
+            transform.Rotate(0, -180, 0);   // flip sprite
+
+            flippedLeft = true;
+        }
+
+        if (!facingLeft && flippedLeft)
+        {
+            transform.Rotate(0, -180, 0);   // flip sprite
+
+            flippedLeft = false;
+        }
     }
 }
