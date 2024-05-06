@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour
     public bool flippedLeft;    // keep track of which way sprite IS CURRENTLY FACING
     public bool facingLeft;    // keep track of which way our sprite SHOULD BE facing
 
+    // sound effects
+    public AudioSource lavaRockAudio;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -91,6 +95,7 @@ public class PlayerController : MonoBehaviour
         {
             // Debug.Log("Ow.");
             TakeDamage(2);
+            lavaRockAudio.Play();   // play lava audio
 
         }
     }
