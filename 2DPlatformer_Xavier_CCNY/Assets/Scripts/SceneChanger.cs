@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
+    // script lives on Game Manager
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,7 @@ public class SceneChanger : MonoBehaviour
     public void MoveToScene(int sceneID)
     {
         // SceneManager.LoadScene("EndScene"); // call a scene specifically by number
-        SceneManager.LoadScene(sceneID);
+        SceneManager.LoadScene(sceneID);    // load scene based off sceneID
     }
 
 }

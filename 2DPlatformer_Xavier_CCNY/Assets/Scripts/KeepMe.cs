@@ -5,10 +5,9 @@ using UnityEngine;
 
 public class KeepMe : MonoBehaviour
 {
-    // 5/6 Monday class
     // GLOBAL VARIABLES
 
-    public static GameObject instance;
+    public static GameObject instance;  // static variable to preserve its value when not in loaded scene
 
 
     // Start is called before the first frame update
@@ -25,12 +24,12 @@ public class KeepMe : MonoBehaviour
         {
             Debug.Log("Audio Manager not destroyed");
             instance = gameObject;  // set value of instance to game object this script is attached to
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);  // do not destroy the target object
         }
-        else
+        else    // otherwise if the instance does already exist in the scene
         {
             Debug.Log("Extra Audio Manager Destroyed");
-            Destroy(gameObject);
+            Destroy(gameObject);    // destroy the duplicate object in the new scene
         }
     }
     // Update is called once per frame

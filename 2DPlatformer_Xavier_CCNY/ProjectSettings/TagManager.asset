@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Surface
   - Lava
+  - Enemy
+  - Obstacle
   layers:
   - Default
   - TransparentFX

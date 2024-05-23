@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    // Wed 4/3
     // GLOBAL VARIABLES
-    public Slider slider;
+    public Slider slider;   // slider UI variable
 
     // Start is called before the first frame update
     void Start()
@@ -21,16 +20,17 @@ public class HealthBar : MonoBehaviour
         
     }
 
-
-    public void SetMaxHealth(int health)
+    // setting the max value of health bar
+    public void SetMaxHealth(int health)    // void that takes in an integer health
     {
-        slider.maxValue = health;
-        slider.value = health;
+        slider.maxValue = health;   // set health to max value of slider component   
+        slider.value = health;  // set value of slider component to health
     }
 
+    // changing Health slider
     public void SetHealth(int health)
     {
-        slider.value = health;
+        slider.value = health;  // change value parameter of slider to equal health
     }
 
 }
